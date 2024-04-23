@@ -4,17 +4,17 @@ import ButtonCustom from "../ButtonCustom/ButtonCustom";
 import {useEffect, useRef, useState} from "react";
 
 const Header = () => {
-  const [color, setColor] = useState('transparent')
-  const [height, setHeight] = useState('150px')
+  const [color, setColor] = useState(0)
+  const [height, setHeight] = useState(0)
 
   useEffect(() => {
     function listenScrollEvent() {
       if (window.scrollY < 100) {
-        setColor('transparent')
-        setHeight('150px')
+        setColor(0)
+        setHeight(window.scrollY)
       } else {
-        setColor('black')
-        setHeight('50px')
+        setColor(100)
+        setHeight(window.scrollY)
       }
     }
     window.addEventListener('scroll', listenScrollEvent)

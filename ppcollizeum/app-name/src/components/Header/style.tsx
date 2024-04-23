@@ -2,24 +2,23 @@ import styled from "styled-components";
 import {COLORS} from "../../constants/Colors";
 
 interface IHeader {
-  background?: string;
-  height?: string;
+  background?: number;
+  height?: number;
 }
 
 export const HeaderWrapper = styled.header<IHeader>`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  height: ${({height}) => height};
+  height: calc(150px - ${({height}) => height}px);
   width: 100%;
   margin: auto;
-  background-color: ${({background}) => background};
+  background-color: rgba(0,0,0,${({background}) => background});
   padding: 32px 64px;
   position: fixed;
   top: 0;
   left: 50%;
-  transition: 0.2s;
-  
+
   z-index: 9999;
   
   transform: translateX(-50%);
