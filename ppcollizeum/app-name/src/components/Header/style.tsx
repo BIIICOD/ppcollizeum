@@ -3,22 +3,24 @@ import {COLORS} from "../../constants/Colors";
 
 interface IHeader {
   background?: string;
-  height?: string;
+  height?: number;
 }
 
 export const HeaderWrapper = styled.header<IHeader>`
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
-  height: ${({height}) => height};
+  height: ${({height}) => height}px;
   width: 100%;
   margin: auto;
   background-color: ${({background}) => background};
-  padding: 32px 64px;
+  padding: 32px 0;
   position: fixed;
   top: 0;
   left: 50%;
+  
   transition: 0.2s;
+  transition-property: background-color;
   
   z-index: 9999;
   
@@ -30,6 +32,15 @@ export const HeaderWrapper = styled.header<IHeader>`
     font-size: 25px;
     font-family: "ManropeBold", serif;
   }
+`
+
+export const HeaderContent = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  width: 100%;
+  max-width: 1200px;
 `
 
 export const LinkWrapper = styled.div`
