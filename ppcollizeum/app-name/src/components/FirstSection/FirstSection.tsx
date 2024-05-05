@@ -10,7 +10,7 @@ const FirstSection = () => {
         Welcome to GameZone - Your<br/> Ultimate Gaming Destination
       </Text>
       <ButtonWrapper>
-        <ButtonCustom color={'white'} text={'Book Now'}/>
+        <ButtonCustom color={'white'} text={'Book Now!'}/>
         <ButtonCustom color={'transWhite'} text={'Join Now'}/>
       </ButtonWrapper>
 

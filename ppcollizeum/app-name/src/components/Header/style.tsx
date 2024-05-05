@@ -18,6 +18,7 @@ export const HeaderWrapper = styled.header<IHeader>`
   position: fixed;
   top: 0;
   left: 50%;
+  transition: 0.1s;
 
   z-index: 9999;
   
