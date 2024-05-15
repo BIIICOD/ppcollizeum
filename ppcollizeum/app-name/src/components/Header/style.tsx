@@ -38,9 +38,33 @@ export const HeaderContent = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: ${COLORS.white};
   
   width: 100%;
   max-width: 1200px;
+  
+`
+
+export const UserBlock = styled.div`
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 0;
+  
+  button{
+    display: none;
+    position: absolute;
+    top: calc(100%);
+    
+    &:hover{
+      display: flex;
+    }
+  }
+  
+  &:hover > button{
+    display: flex;
+  }
 `
 
 export const LinkWrapper = styled.div`

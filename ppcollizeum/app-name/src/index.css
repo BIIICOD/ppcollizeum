@@ -18,3 +18,15 @@
   box-sizing: border-box;
   font-family: "ManropeRegular", serif;
 }
+
+body::-webkit-scrollbar {
+  width: 12px;               /* ширина scrollbar */
+}
+body::-webkit-scrollbar-track {
+  background: #222629ff;        /* цвет дорожки */
+}
+body::-webkit-scrollbar-thumb {
+  background-color: #FC4B37;    /* цвет плашки */
+  border-radius: 10px;       /* закругления плашки */
+  border: 3px solid #222629ff;  /* padding вокруг плашки */
+}

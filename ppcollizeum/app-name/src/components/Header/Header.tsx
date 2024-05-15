@@ -1,7 +1,8 @@
 import {Link} from "react-router-dom";
-import {HeaderContent, HeaderWrapper, LinkWrapper} from "./style";
+import {HeaderContent, HeaderWrapper, LinkWrapper, UserBlock} from "./style";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
 import {useEffect, useRef, useState} from "react";
+import {useAuth} from "../../context/AuthContext";
 
 const Header = () => {
   const [color, setColor] = useState('transparent')
@@ -20,6 +21,8 @@ const Header = () => {
     window.addEventListener('scroll', listenScrollEvent)
   }, [])
 
+  const { currentUser, logout} = useAuth()
+
   return (
     <HeaderWrapper background={color} height={height}>
       <HeaderContent>
@@ -30,9 +33,22 @@ const Header = () => {
           <Link to="/one">Our Gaming Services</Link>
           <Link to="/two">Contact us</Link>
         </LinkWrapper>
-        <Link to={'/book'}>
-          <ButtonCustom color={'white'} text={'Book Now!'}/>
-        </Link>
+        {currentUser ?
+            <UserBlock>
+              <p>{currentUser.email}</p>
+              <ButtonCustom onClick={logout} color={"white"} text={'Logout'}></ButtonCustom>
+            </UserBlock>
+            :
+            ''}
+        {currentUser ?
+            <Link to={'/book'}>
+              <ButtonCustom color={'white'} text={'Book Now!'}/>
+            </Link>
+            :
+            <Link to={'/login'}>
+              <ButtonCustom color={'transWhite'} text={'Join Now!'}/>
+            </Link>
+        }
       </HeaderContent>
     </HeaderWrapper>
   )

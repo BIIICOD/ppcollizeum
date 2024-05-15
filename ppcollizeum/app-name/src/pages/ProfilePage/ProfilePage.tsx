@@ -1,6 +1,8 @@
+import {ProfilePageWrapper} from "./style";
+
 const ProfilePage = () => {
   return(
-    <div>Профиль</div>
+      <ProfilePageWrapper></ProfilePageWrapper>
   )
 }
 
