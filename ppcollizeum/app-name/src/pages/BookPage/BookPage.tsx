@@ -1,4 +1,5 @@
 import {BookPageContent, BookPageWrapper, BookWindow, ClubPickerColumn} from "./style";
+import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 
 const BookPage = () => {
     return (
@@ -9,10 +10,10 @@ const BookPage = () => {
 
                     <ul>
                         <li>
-                            Rostov-on-Don, Socialisticheskaya st. 98
+                            <ButtonCustom color={"white"} text={'Rostov-on-Don, Socialisticheskaya st. 98'}></ButtonCustom>
                         </li>
                         <li>
-                            Rostov-on-Don, Mechnikova st. 77d
+                            <ButtonCustom color={"white"} text={'Rostov-on-Don, Mechnikova st. 77d'}></ButtonCustom>
                         </li>
                     </ul>
                 </ClubPickerColumn>

@@ -47,7 +47,7 @@ export const ClubPickerColumn = styled.div`
         transform: rotate(-90deg);
         font-weight: bold;
 
-        transition: 0.4s ease-in-out;
+        transition: 0.4s;
     }
     
     ul{
@@ -69,7 +69,7 @@ export const ClubPickerColumn = styled.div`
             gap: 15px;
             text-wrap: nowrap;
         }
-        width: 350px;
+        width: 450px;
     }
 `
 

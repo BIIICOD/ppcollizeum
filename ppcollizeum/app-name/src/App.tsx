@@ -5,8 +5,8 @@ import Header from "./components/Header/Header";
 import {StyledApp} from "./style";
 import Footer from "./components/Footer/Footer";
 import ErrorPage from "./pages/ErrorPage/ErrorPage";
-import Login from "./components/Login/Login";
-import AuthProvider, {useAuth} from "./context/AuthContext";
+import Login from "./pages/Login/Login";
+import AuthProvider from "./context/AuthContext";
 import BookPage from "./pages/BookPage/BookPage";
 
 

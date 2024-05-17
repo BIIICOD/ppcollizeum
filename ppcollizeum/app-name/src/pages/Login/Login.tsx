@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import {useAuth} from "../../context/AuthContext";
 import {LoginContent, LoginWrapper} from "./style";
-import ButtonCustom from "../ButtonCustom/ButtonCustom";
+import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {useNavigate} from 'react-router-dom';
 
 interface UserCreds {
@@ -16,9 +16,7 @@ const Login = () => {
     const [createAccount, setCreateAccount] = useState(false);
     const [userCreds, setUserCreds] = useState<UserCreds>({ email: '', password: '' });
 
-    const { signup, login } = useAuth();
-
-    localStorage.getItem('isAuth') === 'true' && navigate('/');
+    const { signup, login, currentUser } = useAuth();
 
     function updateEmail(e: React.ChangeEvent<HTMLInputElement>) {
         setUserCreds({ ...userCreds, email: e.target.value });
@@ -59,34 +57,41 @@ const Login = () => {
                 }
             }
         }
+
     }
 
     return (
         <>
             <LoginWrapper>
                 <LoginContent>
-                    <p>{createAccount ? 'Register' : 'Log In'}</p>
-                    <input
-                        placeholder="Email"
-                        value={userCreds.email}
-                        onChange={(e) => updateEmail(e)}
-                    ></input>
-                    <input
-                        placeholder="Password"
-                        type="password"
-                        value={userCreds.password}
-                        onChange={(e) => updatePassword(e)}
-                    ></input>
-                    {createAccount &&
-                        <input
-                            placeholder="Confirm password"
-                            type="password"
-                            value={userCreds.confirmPassword}
-                            onChange={(e) => updateConfirmPassword(e)}
-                        ></input>
-                    }
+                    {currentUser ?
+                        <p>You already have logged in</p> :
+                        <>
+                            <p>{createAccount ? 'Register' : 'Log In'}</p>
+                            <input
+                                placeholder="Email"
+                                value={userCreds.email}
+                                onChange={(e) => updateEmail(e)}
+                            ></input>
+                            <input
+                                placeholder="Password"
+                                type="password"
+                                value={userCreds.password}
+                                onChange={(e) => updatePassword(e)}
+                            ></input>
+                            {createAccount &&
+                                <input
+                                    placeholder="Confirm password"
+                                    type="password"
+                                    value={userCreds.confirmPassword}
+                                    onChange={(e) => updateConfirmPassword(e)}
+                                ></input>
+                            }
+
                     <ButtonCustom color={'white'} onClick={handleSubmit} text={createAccount ? 'Register' : 'Log In'}/>
                     <ButtonCustom color={'white'} onClick={() => setCreateAccount(!createAccount)} text={createAccount ? 'Go to Log In' : 'Go to Register'} />
+                        </>
+                    }
                 </LoginContent>
             </LoginWrapper>
         </>
