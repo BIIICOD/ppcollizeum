@@ -1,5 +1,6 @@
 import {BookPageContent, BookPageWrapper, BookWindow, ClubPickerColumn} from "./style";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
+import {Pixi} from "../../components/Pixi/Pixi";
 
 const BookPage = () => {
     return (
@@ -18,7 +19,7 @@ const BookPage = () => {
                     </ul>
                 </ClubPickerColumn>
                 <BookWindow>
-
+                    <Pixi></Pixi>
                 </BookWindow>
             </BookPageContent>
         </BookPageWrapper>

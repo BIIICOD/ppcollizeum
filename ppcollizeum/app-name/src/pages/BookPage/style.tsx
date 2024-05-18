@@ -18,13 +18,18 @@ export const BookPageContent = styled.div`
     align-items: center;
     width: 100%;
     max-width: 1200px;
+    border-radius: 20px;
     
     background-color: ${COLORS.white};
 `
 
 export const BookWindow = styled.div`
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 700px;
     width: 100%;
+    
 `
 
 export const ClubPickerColumn = styled.div`
@@ -33,6 +38,9 @@ export const ClubPickerColumn = styled.div`
     align-items: center;
     height: 700px;
     width: 60px;
+    position: absolute;
+    
+    border-radius: 20px 0 0 20px;
     
     padding: 10px;
     
