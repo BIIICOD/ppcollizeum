@@ -14,6 +14,7 @@ export const COLORS: IColors = {
   white: '#FFF',
   whiteHover: '#b9b9b9',
   mainRed: '#FC4B37',
+  // mainRed: '#751e10',
   redHover: '#c93d2c',
   feedbackBlack: '#111111',
   feedbackCardBlack: '#222629ff',

@@ -1,25 +1,61 @@
 import {BookPageContent, BookPageWrapper, BookWindow, ClubPickerColumn} from "./style";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
-import {Pixi} from "../../components/Pixi/Pixi";
+import SeatRow from "../../components/SeatRow/SeatRow";
+import {useEffect, useMemo, useState} from "react";
+import {onValue, ref} from "firebase/database";
+import {db} from "../../firebase";
 
 const BookPage = () => {
+    const [first, setFirst] = useState<any[]>([]);
+    const [second, setSecond] = useState<any[]>([]);
+    const [data, setData] = useState<any[]>(first);
+    const [dataName, setDataName] = useState('first');
+
+    useEffect(() => {
+        return onValue(ref(db, '/first'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let todoItems = [...data];
+            setFirst(todoItems);
+            setData(todoItems)
+        });
+    }, []);
+
+    useEffect(() => {
+        return onValue(ref(db, '/second'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let todoItems = [...data];
+            setSecond(todoItems);
+            setData(todoItems)
+        });
+    }, []);
+
+    function selFir(){
+        setData(first)
+        setDataName('first')
+    }
+
+    function selSec(){
+        setData(second)
+        setDataName('second')
+    }
+
     return (
         <BookPageWrapper>
             <BookPageContent>
                 <ClubPickerColumn>
                     <p>Choose  your  GameZone</p>
-
                     <ul>
                         <li>
-                            <ButtonCustom color={"white"} text={'Rostov-on-Don, Socialisticheskaya st. 98'}></ButtonCustom>
+                            <ButtonCustom onClick={selFir} color={"white"} text={'Rostov-on-Don, Socialisticheskaya st. 98'}></ButtonCustom>
                         </li>
                         <li>
-                            <ButtonCustom color={"white"} text={'Rostov-on-Don, Mechnikova st. 77d'}></ButtonCustom>
+                            <ButtonCustom onClick={selSec} color={"white"} text={'Rostov-on-Don, Mechnikova st. 77d'}></ButtonCustom>
                         </li>
                     </ul>
                 </ClubPickerColumn>
                 <BookWindow>
-                    <Pixi></Pixi>
+                    {dataName}
+                    <SeatRow data={data} dataName={dataName}/>
                 </BookWindow>
             </BookPageContent>
         </BookPageWrapper>

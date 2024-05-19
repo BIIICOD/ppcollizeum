@@ -1,6 +1,6 @@
 import {initializeApp} from 'firebase/app'
 import {getAuth} from 'firebase/auth'
-import {getFirestore} from 'firebase/firestore'
+import { getDatabase } from 'firebase/database';
 
 // Конфигурация Firebase вашего веб-приложения
 // const firebaseConfig = {
@@ -14,6 +14,7 @@ import {getFirestore} from 'firebase/firestore'
 const firebaseConfig = {
     apiKey: "AIzaSyDhc-uu6qss0_pklpa8nTGzMkyh-0Vr2Vw",
     authDomain: "gamezone-e06e0.firebaseapp.com",
+    databaseURL: 'https://gamezone-e06e0-default-rtdb.firebaseio.com/',
     projectId: "gamezone-e06e0",
     storageBucket: "gamezone-e06e0.appspot.com",
     messagingSenderId: "328947294196",
@@ -24,4 +25,4 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app)
-export const db = getFirestore(app)
+export const db = getDatabase(app)

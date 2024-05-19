@@ -25,6 +25,7 @@ export const BookPageContent = styled.div`
 
 export const BookWindow = styled.div`
     display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     height: 700px;
@@ -33,6 +34,7 @@ export const BookWindow = styled.div`
 `
 
 export const ClubPickerColumn = styled.div`
+z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
