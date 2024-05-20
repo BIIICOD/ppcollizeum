@@ -17,31 +17,31 @@ const WhySection = () => {
   return(
       <SecondSectionWrapper>
         <Text>
-          Why GameZone?
+          Почему GameZone?
         </Text>
         <MiniText>
-          GameZone offers an exclusive gaming experience with top-tier
-          equipment and a friendly, competitive environment. Perfect for gamers
-          of all levels.
+          GameZone предлагает эксклюзивный игровой опыт благодаря первоклассному
+          оборудованию и дружественной среде. Идеально подходит для геймеров
+          любого уровня.
         </MiniText>
 
         <WhyCardWrapper>
           <LeftImage src={WhyFirstPhoto} alt={'Изображения нет'}/>
           <WhyTextWrapper>
             <RedText>
-              Top Equipment
+              Первоклассное оборудование
             </RedText>
             <Text>
-              Advanced Gaming Gear
+              Продвинутое игровое оборудование
             </Text>
             <MiniText>
-              State-of-the-art PCs, high-speed internet, and comfortable gaming chairs. Experience gaming at its best.
+              Современные компьютеры, высокоскоростной доступ в Интернет и удобные игровые кресла. Насладитесь игрой в лучшем виде.
             </MiniText>
 
             <WhyTextWrapper>
-              <div><WhyIcon/> High-speed internet</div>
-              <div><WhyIcon/> State-of-the-art PCs</div>
-              <div><WhyIcon/> Comfortable chairs</div>
+              <div><WhyIcon/> Высокоскоростной интернет</div>
+              <div><WhyIcon/> Самые современные компьютеры</div>
+              <div><WhyIcon/> Удобные игровые кресла</div>
             </WhyTextWrapper>
           </WhyTextWrapper>
         </WhyCardWrapper>
@@ -49,20 +49,20 @@ const WhySection = () => {
         <WhyCardWrapper>
           <WhyTextWrapper>
             <RedText>
-              Gamer Community
+              Игровое комьюнити
             </RedText>
             <Text>
-              Join Our Gaming Family
+              Присоединяйтесь к нашей семье игроков
             </Text>
             <MiniText>
-              Be part of a vibrant gaming community. Regular
-              tournaments, events, and the chance to meet fellow gamers
-              make GameZone more than just a place to play.
+              Станьте частью динамичного игрового сообщества. Регулярные
+              турниры, мероприятия и возможность познакомиться с другими игроками
+              превращают GameZone в нечто большее, чем просто место для игр.
             </MiniText>
             <WhyTextWrapper>
-              <div><WhyIcon/> Regular tournaments</div>
-              <div><WhyIcon/> Vibrant community</div>
-              <div><WhyIcon/> Meet fellow gamers</div>
+              <div><WhyIcon/> Частые турниры</div>
+              <div><WhyIcon/> Динамичное сообщество</div>
+              <div><WhyIcon/> Познакомьтесь с другими игроками</div>
             </WhyTextWrapper>
           </WhyTextWrapper>
           <RightImage src={WhySecondPhoto} alt={'Изображения нет'}/>
@@ -72,18 +72,18 @@ const WhySection = () => {
           <LeftImage src={WhyThirdPhoto} alt={'Изображения нет'}/>
           <WhyTextWrapper>
             <RedText>
-              Esports Arena
+              Киберспортивная арена
             </RedText>
             <Text>
-              Competitive Gaming Events
+              Соревновательные игровые мероприятия
             </Text>
             <MiniText>
-              Host and participate in esports events. A state-of-the-art arena<br/> for competitive gaming at its best.
+              Проводите киберспортивные мероприятия и участвуйте в них. Современная арена для проведения соревновательных игр в лучшем виде.
             </MiniText>
             <WhyTextWrapper>
-              <div><WhyIcon/> Host esports events</div>
-              <div><WhyIcon/> Participate in events</div>
-              <div><WhyIcon/> State-of-the-art arena</div>
+              <div><WhyIcon/> Проводите киберспортивные мероприятия</div>
+              <div><WhyIcon/> Участвуйте в мероприятиях</div>
+              <div><WhyIcon/> Современная арена</div>
             </WhyTextWrapper>
           </WhyTextWrapper>
         </WhyCardWrapper>

@@ -10,11 +10,11 @@ const FirstSection = () => {
   return(
     <FirstSectionWrapper>
       <Text>
-        Welcome to GameZone - Your<br/> Ultimate Gaming Destination
+        Добро пожаловать в GameZone - Ваше<br/> Идеальное место для игр
       </Text>
       <ButtonWrapper>
           <Link to={'book'}>
-              <ButtonCustom color={'white'} text={'Book Now!'}/>
+              <ButtonCustom color={'white'} text={'Забронируйте сейчас!'}/>
           </Link>
       </ButtonWrapper>
       <img src={MainPhoto} alt={'Тут должна быть картинка'}/>

@@ -2,9 +2,7 @@ import styled from "styled-components";
 import {COLORS} from "../../constants/Colors";
 
 export const BookPageWrapper = styled.div`
-    height: 100vh;
-    max-height: 1200px;
-    padding: 250px 0 100px 0;
+    padding: 150px 0 100px 0;
     background-color: ${COLORS.mainRed};
     
     display: flex;

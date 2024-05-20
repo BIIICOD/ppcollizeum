@@ -27,26 +27,27 @@ const SeatRow = (props: IData) => {
         dataName
     } = props;
 
-    const Sprites = data.map((sprite, pos) => {
+    const Sprites = data.map((sprite, pos, data) => {
         const setBook = () => {
             update(ref(db, `/${dataName}/${pos}`), {
                 state: 'book',
+                user: currentUser?.email || 'guest',
             });
         };
 
         const setFree = () => {
             update(ref(db, `/${dataName}/${pos}`), {
                 state: 'free',
+                user: currentUser?.email || 'guest',
             });
         };
-
 
         const setClose = () => {
             update(ref(db, `/${dataName}/${pos}`), {
                 state: 'close',
+                user: currentUser?.email || 'guest',
             });
         };
-
 
         return (
             <SeatRowBlock>
@@ -57,7 +58,8 @@ const SeatRow = (props: IData) => {
                 />
                 <section>
                     <p>Номер компьютера - {pos}</p>
-                    <p>Стостояние - {sprite?.state === 'free' ? 'Свободно' : sprite?.state === 'close' ? 'Занято' : 'Зарезервировано'}</p>
+                    <p>Стостояние - {sprite?.state === 'free' ? 'Свободно' : sprite?.state === 'close' ? 'Занято' : 'Зарезервировано' }</p>
+                    <p>{(sprite.state !== 'free' && currentUser?.email === 'vopi.vopi@mail.ru') ? sprite?.user : ''}</p>
                     {currentUser?.email === 'vopi.vopi@mail.ru'
                         ?
                             <>
@@ -68,6 +70,7 @@ const SeatRow = (props: IData) => {
                         :
                             <>
                                 {sprite?.state === 'free' && <ButtonCustom onClick={setBook} color={"red"} text={'Забронировать'}/> }
+                                {(sprite?.state === 'book' && sprite?.user === currentUser?.email) && <ButtonCustom onClick={setFree} color={"red"} text={'Отменить бронирование'}/> }
                             </>
                         }
                 </section>

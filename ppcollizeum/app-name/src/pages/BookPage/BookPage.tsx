@@ -8,23 +8,23 @@ import {db} from "../../firebase";
 const BookPage = () => {
     const [first, setFirst] = useState<any[]>([]);
     const [second, setSecond] = useState<any[]>([]);
-    const [data, setData] = useState<any[]>(first);
+    const [data, setData] = useState<any[]>();
     const [dataName, setDataName] = useState('first');
-
-    useEffect(() => {
-        return onValue(ref(db, '/first'), querySnapShot => {
-            let data = querySnapShot.val() || [];
-            let todoItems = [...data];
-            setFirst(todoItems);
-            setData(todoItems)
-        });
-    }, []);
 
     useEffect(() => {
         return onValue(ref(db, '/second'), querySnapShot => {
             let data = querySnapShot.val() || [];
             let todoItems = [...data];
             setSecond(todoItems);
+            setData(todoItems)
+        });
+    }, []);
+
+    useEffect(() => {
+        return onValue(ref(db, '/first'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let todoItems = [...data];
+            setFirst(todoItems);
             setData(todoItems)
         });
     }, []);
@@ -54,8 +54,7 @@ const BookPage = () => {
                     </ul>
                 </ClubPickerColumn>
                 <BookWindow>
-                    {dataName}
-                    <SeatRow data={data} dataName={dataName}/>
+                    {data ? <SeatRow data={data} dataName={dataName}/> : 'Подождите, схема клуба загружается' }
                 </BookWindow>
             </BookPageContent>
         </BookPageWrapper>

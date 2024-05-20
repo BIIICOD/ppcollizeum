@@ -28,25 +28,25 @@ const Header = () => {
       <HeaderContent>
         <Link to="/">GameZone</Link>
         <LinkWrapper>
-          <Link to="/one">Placement</Link>
-          <Link to="/two">Why GameZone?</Link>
-          <Link to="/one">Our Gaming Services</Link>
-          <Link to="/two">Contact us</Link>
+          <Link to="/one">Расположение</Link>
+          <Link to="/two">Почему GameZone?</Link>
+          <Link to="/one">Наши игровые сервисы</Link>
+          <Link to="/two">Свяжитесь с нами</Link>
         </LinkWrapper>
         {currentUser ?
             <UserBlock>
               <p>{currentUser.email}</p>
-              <ButtonCustom onClick={logout} color={"white"} text={'Logout'}></ButtonCustom>
+              <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
             </UserBlock>
             :
             ''}
         {currentUser ?
             <Link to={'/book'}>
-              <ButtonCustom color={'white'} text={'Book Now!'}/>
+              <ButtonCustom color={'white'} text={'Забронируйте сейчас!'}/>
             </Link>
             :
             <Link to={'/login'}>
-              <ButtonCustom color={'transWhite'} text={'Join Now!'}/>
+              <ButtonCustom color={'transWhite'} text={'Присоединитесь сейчас!'}/>
             </Link>
         }
       </HeaderContent>
