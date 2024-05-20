@@ -43,18 +43,21 @@ const BookPage = () => {
         <BookPageWrapper>
             <BookPageContent>
                 <ClubPickerColumn>
-                    <p>Choose  your  GameZone</p>
+                    <p>Выбери свой GameZone</p>
                     <ul>
                         <li>
-                            <ButtonCustom onClick={selFir} color={"white"} text={'Rostov-on-Don, Socialisticheskaya st. 98'}></ButtonCustom>
+                            <ButtonCustom onClick={selFir} color={"white"} text={'Ростов-на-Дону, Социалистическая ул. 98'}></ButtonCustom>
                         </li>
                         <li>
-                            <ButtonCustom onClick={selSec} color={"white"} text={'Rostov-on-Don, Mechnikova st. 77d'}></ButtonCustom>
+                            <ButtonCustom onClick={selSec} color={"white"} text={'Ростов-на-Дону, Мечникова ул. 77д'}></ButtonCustom>
                         </li>
                     </ul>
                 </ClubPickerColumn>
                 <BookWindow>
-                    {data ? <SeatRow data={data} dataName={dataName}/> : 'Подождите, схема клуба загружается' }
+                    <h1>
+                        {dataName === 'first' ? 'Ростов-на-Дону, Социалистическая ул. 98' : dataName === 'second' ? 'Ростов-на-Дону, Мечникова ул. 77д' : ''}
+                    </h1>
+                    <p>{data ? <SeatRow data={data} dataName={dataName}/> : 'Подождите, схема клуба загружается' }</p>
                 </BookWindow>
             </BookPageContent>
         </BookPageWrapper>

@@ -9,7 +9,7 @@ const MainPage = () => {
   return(
     <MainPageWrapper>
       <FirstSection/>
-      <WhySection/>
+        <WhySection />
         <GamingServices/>
         <MapSection/>
         <FeedbackSection/>

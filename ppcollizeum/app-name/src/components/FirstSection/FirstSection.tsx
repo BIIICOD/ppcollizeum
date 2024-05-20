@@ -8,7 +8,7 @@ import {useAuth} from "../../context/AuthContext";
 const FirstSection = () => {
 
   return(
-    <FirstSectionWrapper>
+    <FirstSectionWrapper id={'main'}>
       <Text>
         Добро пожаловать в GameZone - Ваше<br/> Идеальное место для игр
       </Text>

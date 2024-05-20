@@ -3,6 +3,8 @@ import {useAuth} from "../../context/AuthContext";
 import {LoginContent, LoginWrapper} from "./style";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {useNavigate} from 'react-router-dom';
+import {push, ref, update} from "firebase/database";
+import {db} from "../../firebase";
 
 interface UserCreds {
     email: string;
@@ -38,11 +40,15 @@ const Login = () => {
             if( userCreds.password === userCreds.confirmPassword ) {
                 try {
                     await signup(userCreds.email, userCreds.password);
+                    push(ref(db, `/users`), {
+                        email: userCreds?.email,
+                        role: 'user'
+                    });
                     await login(userCreds.email, userCreds.password);
                     navigate('/')
                 } catch (e:any){
                     if(e.code === 'auth/email-already-in-use'){
-                        alert('Email already in use. Try again');
+                        alert('Такой email уже существует. Попробуйте снова');
                     }
                 }
             } else alert('Passwords don\'t match');
@@ -53,7 +59,7 @@ const Login = () => {
                 navigate('/');
             } catch (e:any){
                 if(e.code === 'auth/invalid-credential'){
-                    alert('Invalid credential. Try again');
+                    alert('Неверный логин или пароль. Попробуйте снова');
                 }
             }
         }
@@ -65,7 +71,7 @@ const Login = () => {
             <LoginWrapper>
                 <LoginContent>
                     {currentUser ?
-                        <p>You already have logged in</p> :
+                        <p>Вы уже вошли в аккаунт</p> :
                         <>
                             <p>{createAccount ? 'Register' : 'Log In'}</p>
                             <input
@@ -87,9 +93,8 @@ const Login = () => {
                                     onChange={(e) => updateConfirmPassword(e)}
                                 ></input>
                             }
-
-                    <ButtonCustom color={'white'} onClick={handleSubmit} text={createAccount ? 'Register' : 'Log In'}/>
-                    <ButtonCustom color={'white'} onClick={() => setCreateAccount(!createAccount)} text={createAccount ? 'Go to Log In' : 'Go to Register'} />
+                    <ButtonCustom color={'white'} onClick={handleSubmit} text={createAccount ? 'Зарегистрироваться' : 'Войти'}/>
+                    <ButtonCustom color={'white'} onClick={() => setCreateAccount(!createAccount)} text={createAccount ? 'Перейти ко входу' : 'Перейти к регистрации'} />
                         </>
                     }
                 </LoginContent>

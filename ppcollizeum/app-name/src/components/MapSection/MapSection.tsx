@@ -4,22 +4,22 @@ import {ReactComponent as MapIcon} from "../../icons/MapIcon.svg";
 
 const MapSection = () => {
     return(
-        <MapSectionWrapper>
+        <MapSectionWrapper id={'map'}>
             <MapSectionContent>
                 <MapSectionTitle>
-                    Find us on map
+                    Ищите нас на карте
                 </MapSectionTitle>
                 <MapBlock>
                     <MapSectionText>
                         <h3>
-                            Our Address
+                            Наши адреса
                         </h3>
                         <ul>
                             <li>
-                                <MapIcon/> Rostov-on-Don, Socialisticheskaya st. 98
+                                <MapIcon/> Ростов-на-Дону, Социалистическая ул. 98
                             </li>
                             <li>
-                                <MapIcon/> Rostov-on-Don, Mechnikova st. 77d
+                                <MapIcon/> Ростов-на-Дону, Мечникова ул. 77д
                             </li>
                         </ul>
                     </MapSectionText>

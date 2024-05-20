@@ -1,8 +1,9 @@
-import {Link} from "react-router-dom";
+import {Link, useNavigate} from "react-router-dom";
 import {HeaderContent, HeaderWrapper, LinkWrapper, UserBlock} from "./style";
 import ButtonCustom from "../ButtonCustom/ButtonCustom";
 import {useEffect, useRef, useState} from "react";
 import {useAuth} from "../../context/AuthContext";
+import { HashLink } from 'react-router-hash-link';
 
 const Header = () => {
   const [color, setColor] = useState('transparent')
@@ -26,20 +27,17 @@ const Header = () => {
   return (
     <HeaderWrapper background={color} height={height}>
       <HeaderContent>
-        <Link to="/">GameZone</Link>
+        <HashLink to="/#main">GameZone</HashLink>
         <LinkWrapper>
-          <Link to="/one">Расположение</Link>
-          <Link to="/two">Почему GameZone?</Link>
-          <Link to="/one">Наши игровые сервисы</Link>
-          <Link to="/two">Свяжитесь с нами</Link>
+          <HashLink smooth to="/#why">Почему GameZone?</HashLink>
+          <HashLink smooth to="/#gameService">Наши игровые сервисы</HashLink>
+          <HashLink smooth to='/#map' > Расположение </HashLink>
+          <HashLink smooth to="/#contact">Отзывы</HashLink>
         </LinkWrapper>
-        {currentUser ?
             <UserBlock>
-              <p>{currentUser.email}</p>
+              <p>{currentUser?.email}</p>
               <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
             </UserBlock>
-            :
-            ''}
         {currentUser ?
             <Link to={'/book'}>
               <ButtonCustom color={'white'} text={'Забронируйте сейчас!'}/>

@@ -3,7 +3,7 @@ import {COLORS} from "../../constants/Colors";
 
 export const BookPageWrapper = styled.div`
     padding: 150px 0 100px 0;
-    background-color: ${COLORS.mainRed};
+    background-color: ${COLORS.feedbackCardBlack};
     
     display: flex;
     justify-content: center;
@@ -17,38 +17,44 @@ export const BookPageContent = styled.div`
     width: 100%;
     max-width: 1200px;
     border-radius: 20px;
-    
-    background-color: ${COLORS.white};
+    background-color: #383c3e;
 `
 
 export const BookWindow = styled.div`
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    justify-content: space-evenly;
     align-items: center;
     height: 700px;
     width: 100%;
+
+    color: white;
     
+    p{
+        font-size: 24px;
+    }
+
 `
 
 export const ClubPickerColumn = styled.div`
-z-index: 999;
+    z-index: 999;
     display: flex;
     justify-content: center;
     align-items: center;
     height: 700px;
     width: 60px;
     position: absolute;
-    
-    border-radius: 20px 0 0 20px;
-    
+
+    border-radius: 15px 0 0 15px;
+
     padding: 10px;
-    
-    background-color: ${COLORS.black};
+
+    background-color: rgba(89, 89, 89, 0.83);
+    backdrop-filter: blur(5px);
     transition: 0.4s ease-in-out;
     color: ${COLORS.white};
-    
-    p{
+
+    p {
         position: absolute;
         font-size: 44px;
         text-wrap: nowrap;
@@ -57,26 +63,27 @@ z-index: 999;
 
         transition: 0.4s;
     }
-    
-    ul{
-        list-style-type: none;  
+
+    ul {
+        list-style-type: none;
         display: none;
         transition: 0.4s;
     }
-    
-    &:hover{
-        p{  
+
+    &:hover {
+        p {
             display: none;
         }
-        
-        ul{
-            overflow: hidden;   
+
+        ul {
+            overflow: hidden;
             display: flex;
             flex-direction: column;
             align-items: flex-start;
             gap: 15px;
             text-wrap: nowrap;
         }
+
         width: 450px;
     }
 `

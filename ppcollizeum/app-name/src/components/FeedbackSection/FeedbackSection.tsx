@@ -19,24 +19,24 @@ import {ReactComponent as StarIcon} from "../../icons/StarIcon.svg";
 
 const FeedbackSection = () => {
     return(
-        <FeedbackSectionWrapper>
+        <FeedbackSectionWrapper id={'contact'}>
             <FeedbackSectionContent>
                 <FeedbackSectionTitle>
-                    Happy Gamers
+                    Счастливые Игроки
                 </FeedbackSectionTitle>
                 <p>
-                    Read genuine testimonials from our community members and see how GameZone has enhanced their gaming experience.
+                    Ознакомьтесь с подлинными отзывами участников нашего сообщества и узнайте, как GameZone улучшила их игровой опыт.
                 </p>
                 <FeedbackCardBlock>
                     <FeedbackCard>
                         <FeedbackText>
-                            "GameZone has become my go-to place for gaming. Great atmosphere, awesome games, and a fantastic community."
+                            "GameZone стал моим любимым местом для игр. Отличная атмосфера, потрясающие игры и фантастическое сообщество".
                         </FeedbackText>
                         <FeedbackUserBlock>
                             <FeedbackUser>
                                 <FeedbackUserIcon/>
                                 <FeedbackUserName>
-                                    John Doe
+                                    Владимиров Всеволод
                                     <FeedbackUserRate>
                                         <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/>
                                     </FeedbackUserRate>
@@ -47,13 +47,13 @@ const FeedbackSection = () => {
                     </FeedbackCard>
                     <FeedbackCard>
                         <FeedbackText>
-                            "The coaching sessions at GameZone have significantly improved my gaming skills. Highly recommend to any gamer looking to level up."
+                            "Тренировки в GameZone значительно улучшили мои игровые навыки. Настоятельно рекомендую всем геймерам, которые хотят повысить свой уровень".
                         </FeedbackText>
                         <FeedbackUserBlock>
                             <FeedbackUser>
                                 <FeedbackUserIcon/>
                                 <FeedbackUserName>
-                                    Jane Smith
+                                    Агеев Дмитрий
                                     <FeedbackUserRate>
                                         <StarIcon/><StarIcon/><StarIcon/><StarIcon/><StarIcon/>
                                     </FeedbackUserRate>

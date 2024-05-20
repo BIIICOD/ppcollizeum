@@ -13,6 +13,7 @@ import {
 } from 'firebase/database';
 import {db} from "../../firebase";
 import {useAuth} from "../../context/AuthContext";
+import {useEffect, useMemo, useState} from "react";
 
 interface IData{
     data: any[],
@@ -21,11 +22,22 @@ interface IData{
 
 const SeatRow = (props: IData) => {
     const { currentUser } = useAuth();
+    const [isAdmin, setIsAdmin] = useState<boolean>(false)
 
     const {
         data,
         dataName
     } = props;
+
+    useEffect(() => {
+        onValue(ref(db, '/users'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let usersItems = [data];
+            Object.values(usersItems[0]).map((el:any) => {
+                (el.email === currentUser?.email && el.role === 'admin') && setIsAdmin(true)
+            });
+        });
+    })
 
     const Sprites = data.map((sprite, pos, data) => {
         const setBook = () => {
@@ -60,12 +72,12 @@ const SeatRow = (props: IData) => {
                     <p>Номер компьютера - {pos}</p>
                     <p>Стостояние - {sprite?.state === 'free' ? 'Свободно' : sprite?.state === 'close' ? 'Занято' : 'Зарезервировано' }</p>
                     <p>{(sprite.state !== 'free' && currentUser?.email === 'vopi.vopi@mail.ru') ? sprite?.user : ''}</p>
-                    {currentUser?.email === 'vopi.vopi@mail.ru'
+                    {isAdmin && currentUser
                         ?
                             <>
-                                <ButtonCustom onClick={setFree} color={"red"} text={'Освободить'}/>
-                                <ButtonCustom onClick={setBook} color={"red"} text={'Забронировать'}/>
-                                <ButtonCustom onClick={setClose} color={"red"} text={'Закрыть'}/>
+                                <ButtonCustom onClick={setFree} color={"white"} text={'Освободить'}/>
+                                <ButtonCustom onClick={setBook} color={"white"} text={'Забронировать'}/>
+                                <ButtonCustom onClick={setClose} color={"white"} text={'Закрыть'}/>
                             </>
                         :
                             <>

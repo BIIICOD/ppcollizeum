@@ -17,64 +17,64 @@ import {ReactComponent as VrIcon} from "../../icons/VrIcon.svg";
 
 const GamingServices = () => {
     return (
-        <GamingServicesWrapper>
+        <GamingServicesWrapper id={'gameService'}>
             <GamingServicesContent>
                 <TopText>
-                    Our Gaming Services
+                    Наши игровые сервисы
                 </TopText>
                 <CardWrapper>
                     <Card>
                         <VrIcon/>
                         <CardBoldText>
-                            VR Games
+                            Игры виртуальной реальности
                         </CardBoldText>
                         <CardText>
-                            Dive into virtual reality gaming with our extensive collection of VR titles. From action-packed adventures to immersive simulations, we have something for every VR enthusiast.
+                            Погрузитесь в игры в виртуальной реальности с нашей обширной коллекцией VR-игр. От захватывающих приключений до иммерсивных симуляторов - у нас найдется что-то для каждого любителя виртуальной реальности.
                         </CardText>
                     </Card>
                     <Card>
                         <PcBuildIcon/>
                         <CardBoldText>
-                            PC Build
+                            Сборка ПК
                         </CardBoldText>
                         <CardText>
-                            Customize your dream gaming PC with our PC build service. From component selection to assembly, we provide expert guidance every step of the way.
+                            Настройте игровой компьютер своей мечты с помощью нашей службы сборки ПК. На каждом этапе, от выбора компонентов до сборки, мы предоставляем квалифицированные консультации.
                         </CardText>
                     </Card>
                     <Card>
                         <RetroIcon/>
                         <CardBoldText>
-                            Retro Games
+                            Ретро-игры
                         </CardBoldText>
                         <CardText>
-                            Take a trip down memory lane with our selection of classic retro games. Experience the nostalgia of gaming's golden age with titles from the past decades.
+                            Погрузитесь в воспоминания с нашей подборкой классических ретро-игр. Испытайте ностальгию по золотому веку гейминга, ознакомившись с играми прошлых десятилетий.
                         </CardText>
                     </Card>
                     <Card>
                         <TwitchIcon/>
                         <CardBoldText>
-                            Streamer Zone
+                            Зона стримингов
                         </CardBoldText>
                         <CardText>
-                            Our dedicated streamer zone allows you to broadcast your gameplay live. Equipped with high-speed internet and top-tier streaming gear, it's perfect for aspiring or professional streamers.
+                            Наша выделенная зона для стримеров позволяет вам транслировать ваш игровой процесс в прямом эфире. Оснащенная высокоскоростным Интернетом и первоклассным оборудованием для стриминга, она идеально подходит для начинающих или профессиональных стримеров.
                         </CardText>
                     </Card>
                     <Card>
                         <CupIcon/>
                         <CardBoldText>
-                            Tournaments
+                            Турниры
                         </CardBoldText>
                         <CardText>
-                            Compete in our regular gaming tournaments for a chance to win prizes and gain recognition in the gaming community. Open to gamers of all levels.
+                            Участвуйте в наших регулярных игровых турнирах, чтобы получить шанс выиграть призы и завоевать признание в игровом сообществе. Мы открыты для игроков любого уровня.
                         </CardText>
                     </Card>
                     <Card>
                         <TeacherIcon/>
                         <CardBoldText>
-                            Coaching
+                            Тренировки
                         </CardBoldText>
                         <CardText>
-                            Looking to level up your game? Our professional coaches offer personalized training sessions in a variety of games, tailored to your skill level and goals.
+                            Хотите повысить свой уровень игры? Наши профессиональные тренеры предлагают индивидуальные тренировки по различным играм, адаптированные к вашему уровню мастерства и целям.
                         </CardText>
                     </Card>
                 </CardWrapper>

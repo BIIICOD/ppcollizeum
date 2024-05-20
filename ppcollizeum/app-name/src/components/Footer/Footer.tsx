@@ -18,31 +18,31 @@ const Footer = () => {
                             GameZone
                         </FooterContentTopTitle>
                         <p>
-                            GameZone is the premier gaming destination offering top-tier equipment, dedicated gaming spaces, and a vibrant community.
+                            GameZone - это ведущее игровое направление, предлагающее первоклассное оборудование, выделенные игровые пространства и динамичное сообщество.
                         </p>
                     </FooterContentTopBlock>
 
                     <FooterContentTopBlock>
                         <FooterContentTopTitle>
-                            Explore
+                            Навигация
                         </FooterContentTopTitle>
                         <p>
-                            About Us
+                            О нас
                         </p>
                         <p>
-                            Services
+                            Услуги
                         </p>
                         <p>
-                            Contact
+                            Связаться с нами
                         </p>
                         <p>
-                            Blog
+                            Блог
                         </p>
                     </FooterContentTopBlock>
 
                     <FooterContentTopBlock>
                         <FooterContentTopTitle>
-                            Contact
+                            Контакты
                         </FooterContentTopTitle>
                         <p>
                             contact@gamezone.com

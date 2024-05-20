@@ -5,7 +5,7 @@ export const SeatRowWrapper = styled.div`
     display: flex;
     flex-flow: row wrap;
 
-    background-color: #cacaca;
+    background-color: white;
     border-radius: 20px;
     padding: 50px;
 `
@@ -15,26 +15,28 @@ export const SeatRowBlock = styled.div`
     display: flex;
     justify-content: center;
     flex-basis: 20%;
-    
-    section{
+
+    section {
         display: none;
     }
 
-    img{
+    img {
         filter: drop-shadow(1px 1px 1px #222);
     }
 
-    img:hover{
+    img:hover {
         cursor: pointer;
         opacity: .6;
     }
 
-    &:hover{
-        section{
+    &:hover {
+        section {
             padding: 10px;
             border-radius: 10px;
             z-index: 999;
-            background-color: ${COLORS.black};
+            background-color: rgba(30, 30, 30, 0.75);
+            backdrop-filter: blur(10px);
+
             color: white;
             position: absolute;
             top: 100%;
@@ -44,9 +46,8 @@ export const SeatRowBlock = styled.div`
             align-items: center;
             gap: 10px;
             text-transform: uppercase;
-            font-weight: bold;
 
-            p{
+            p {
                 text-wrap: nowrap;
             }
         }
