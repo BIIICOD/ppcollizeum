@@ -21,23 +21,12 @@ interface IData{
 }
 
 const SeatRow = (props: IData) => {
-    const { currentUser } = useAuth();
-    const [isAdmin, setIsAdmin] = useState<boolean>(false)
+    const { currentUser, isAdmin} = useAuth();
 
     const {
         data,
         dataName
     } = props;
-
-    useEffect(() => {
-        onValue(ref(db, '/users'), querySnapShot => {
-            let data = querySnapShot.val() || [];
-            let usersItems = [data];
-            Object.values(usersItems[0]).map((el:any) => {
-                (el.email === currentUser?.email && el.role === 'admin') && setIsAdmin(true)
-            });
-        });
-    })
 
     const Sprites = data.map((sprite, pos, data) => {
         const setBook = () => {

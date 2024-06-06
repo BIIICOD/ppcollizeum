@@ -22,7 +22,7 @@ function App() {
                   <Route path="login" element={<Login/>} />
                   <Route path="/" element={<MainPage />} />
                   <Route path="book" element={<BookPage />} />
-                  <Route path="three" element={<ProfilePage />} />
+                  <Route path="/profile" element={<ProfilePage />} />
               </Routes>
           <Footer/>
           </AuthProvider>

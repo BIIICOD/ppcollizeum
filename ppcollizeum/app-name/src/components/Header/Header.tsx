@@ -34,11 +34,15 @@ const Header = () => {
           <HashLink smooth to='/#map' > Расположение </HashLink>
           <HashLink smooth to="/#contact">Отзывы</HashLink>
         </LinkWrapper>
-            <UserBlock>
+        { currentUser &&
+          <UserBlock>
+            <Link to={'/profile'}>
               <p>{currentUser?.email}</p>
-              <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
-            </UserBlock>
-        {currentUser ?
+            </Link>
+            <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
+          </UserBlock>
+        }
+        {currentUser?.email ?
             <Link to={'/book'}>
               <ButtonCustom color={'white'} text={'Забронируйте сейчас!'}/>
             </Link>

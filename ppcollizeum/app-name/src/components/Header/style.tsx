@@ -56,14 +56,14 @@ export const UserBlock = styled.div`
     display: none;
     position: absolute;
     top: calc(100%);
-    
-    &:hover{
-      display: flex;
-    }
   }
   
   &:hover > button{
     display: flex;
+  }
+  
+  a{
+    font-size: 16px;
   }
 `
 

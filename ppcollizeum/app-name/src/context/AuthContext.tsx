@@ -1,7 +1,7 @@
 import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
-import {ref, update} from "firebase/database";
+import {onValue, ref, update} from "firebase/database";
 
 const AuthContext = React.createContext<any>(null);
 
@@ -14,6 +14,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Создаем компонент-обертку auth для приложения.
     // Можем опционально определить состояние userData и добавить в контекст.
     const [currentUser, setCurrentUser] = useState<any>(null);
+    const [isAdmin, setIsAdmin] = useState<boolean>(false)
 
     function signup(email: string, password: string) {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -36,11 +37,22 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         return unsubscribe;
     }, []);
 
+    useEffect(() => {
+        onValue(ref(db, '/users'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let usersItems = [data];
+            Object.values(usersItems[0]).map((el:any) => {
+                (el.email === currentUser?.email && el.role === 'admin') && setIsAdmin(true)
+            });
+        });
+    })
+
     const value = {
         currentUser,
         signup,
         logout,
         login,
+        isAdmin
     };
 
     return (
