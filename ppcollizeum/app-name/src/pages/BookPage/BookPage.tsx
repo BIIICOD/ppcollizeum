@@ -4,6 +4,7 @@ import SeatRow from "../../components/SeatRow/SeatRow";
 import {useEffect, useMemo, useState} from "react";
 import {onValue, ref} from "firebase/database";
 import {db} from "../../firebase";
+import {Link} from "react-router-dom";
 
 const BookPage = () => {
     const [first, setFirst] = useState<any[]>([]);
@@ -58,7 +59,11 @@ const BookPage = () => {
                         {dataName === 'first' ? 'Ростов-на-Дону, Социалистическая ул. 98' : dataName === 'second' ? 'Ростов-на-Дону, Мечникова ул. 77д' : ''}
                     </h1>
                     <p>{data ? <SeatRow data={data} dataName={dataName}/> : 'Подождите, схема клуба загружается' }</p>
+                    <Link to={'/order'}>
+                        <ButtonCustom onClick={selSec} color={"white"} text={'Заказать продукты'}></ButtonCustom>
+                    </Link>
                 </BookWindow>
+
             </BookPageContent>
         </BookPageWrapper>
     )

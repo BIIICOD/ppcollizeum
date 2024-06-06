@@ -8,6 +8,8 @@ import ErrorPage from "./pages/ErrorPage/ErrorPage";
 import Login from "./pages/Login/Login";
 import AuthProvider from "./context/AuthContext";
 import BookPage from "./pages/BookPage/BookPage";
+import OrderPage from "./pages/OrderPage/OrderPage";
+import CartPage from "./pages/CartPage/CartPage";
 
 
 
@@ -23,6 +25,8 @@ function App() {
                   <Route path="/" element={<MainPage />} />
                   <Route path="book" element={<BookPage />} />
                   <Route path="/profile" element={<ProfilePage />} />
+                  <Route path="/order" element={<OrderPage />} />
+                  <Route path="/cart" element={<CartPage />} />
               </Routes>
           <Footer/>
           </AuthProvider>

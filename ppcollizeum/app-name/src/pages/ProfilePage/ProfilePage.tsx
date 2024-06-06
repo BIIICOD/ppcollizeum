@@ -1,9 +1,16 @@
-import {ProfilePageContent, ProfilePageWrapper, SideContent} from "./style";
+import {
+    OrderContent,
+    ProfilePageContent,
+    ProfilePageUnlogin,
+    ProfilePageWrapper,
+    SideContent,
+    SideContentBody,
+    SideContentHeader
+} from "./style";
 import {useAuth} from "../../context/AuthContext";
 import {useEffect, useState} from "react";
 import {onValue, ref} from "firebase/database";
 import {db} from "../../firebase";
-import {log} from "node:util";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {Link} from "react-router-dom";
 
@@ -37,36 +44,61 @@ const ProfilePage = () => {
             ?
           <ProfilePageWrapper>
               <ProfilePageContent>
-                <h1>Войдите в аккаунт для просмотра профиля</h1>
-                  <Link to={'/login'}>
-                    <ButtonCustom color={'white'} text={'Войти'}></ButtonCustom>
-                  </Link>
+                  <ProfilePageUnlogin>
+                      <h2>Войдите в аккаунт для просмотра профиля</h2>
+                      <Link to={'/login'}>
+                        <ButtonCustom color={'white'} text={'Войти'}></ButtonCustom>
+                      </Link>
+                  </ProfilePageUnlogin>
               </ProfilePageContent>
           </ProfilePageWrapper>
           :
           <ProfilePageWrapper>
             <ProfilePageContent>
-                  <p>Имя пользователя - {currentUser?.email}</p>
+                <SideContent>
+                  <SideContentHeader>Имя пользователя <br/> {currentUser?.email}</SideContentHeader>
                       {isAdmin
                           ?
                           <>
-                              <ul>
-                                  Социалистическая ул. 98:
-                                  <li>Кол-во забронированных мест - {firstData.filter((el) => el.state === 'book').length}</li>
-                                  <li>Кол-во закрытых мест - {firstData.filter((el) => el.state === 'close').length}</li>
-                              </ul>
-                              <ul>
-                                  Мечникова ул. 77д:
-                                  <li>Кол-во забронированных мест - {secondData.filter((el) => el.state === 'book').length}</li>
-                                  <li>Кол-во закрытых мест - {secondData.filter((el) => el.state === 'close').length}</li>
-                              </ul>
+                              <SideContentBody>
+                                  <ul>
+                                      Социалистическая ул. 98:
+                                      <li>Свободных мест
+                                          - {firstData.filter((el) => el.state === 'free').length}</li>
+                                      <li>Забронированных мест
+                                          - {firstData.filter((el) => el.state === 'book').length}</li>
+                                      <li>Занятых мест
+                                          - {firstData.filter((el) => el.state === 'close').length}</li>
+                                  </ul>
+                                  <ul>
+                                      Мечникова ул. 77д:
+                                      <li>Свободных мест
+                                          - {secondData.filter((el) => el.state === 'free').length}</li>
+                                      <li>Забронированных мест
+                                          - {secondData.filter((el) => el.state === 'book').length}</li>
+                                      <li>Занятых мест
+                                          - {secondData.filter((el) => el.state === 'close').length}</li>
+                                  </ul>
+                              </SideContentBody>
                           </>
                           :
                           <>
-                              <p>Кол-во забронированных мест Социалистическая ул. 98 - {bookCountFirst}</p>
-                              <p>Кол-во забронированных мест Мечникова ул. 77д: - {bookCountSecond}</p>
+                              <SideContentBody>
+                                  <div>
+                                      <p>Кол-во забронированных мест:</p>
+                                      <p>Социалистическая ул. 98 - {bookCountFirst}</p>
+                                      <p>Мечникова ул. 77д - {bookCountSecond}</p>
+                                  </div>
+                                  <Link to={'/book'}>
+                                      <ButtonCustom color={'white'} text={'Забронируйте сейчас!'}/>
+                                  </Link>
+                              </SideContentBody>
                           </>
                       }
+                </SideContent>
+                <OrderContent>
+                    Оформленные заказы
+                </OrderContent>
             </ProfilePageContent>
         </ProfilePageWrapper>
       }

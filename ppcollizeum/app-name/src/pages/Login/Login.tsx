@@ -45,7 +45,7 @@ const Login = () => {
                         role: 'user'
                     });
                     await login(userCreds.email, userCreds.password);
-                    navigate('/')
+                    navigate('/profile')
                 } catch (e:any){
                     if(e.code === 'auth/email-already-in-use'){
                         alert('Такой email уже существует. Попробуйте снова');
@@ -56,7 +56,7 @@ const Login = () => {
             try{
                 await login(userCreds.email, userCreds.password);
                 localStorage.setItem("isAuth", 'true')
-                navigate('/');
+                navigate('/profile');
             } catch (e:any){
                 if(e.code === 'auth/invalid-credential'){
                     alert('Неверный логин или пароль. Попробуйте снова');

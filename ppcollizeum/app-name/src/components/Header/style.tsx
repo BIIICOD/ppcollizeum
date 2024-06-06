@@ -51,15 +51,17 @@ export const UserBlock = styled.div`
   flex-direction: column;
   align-items: center;
   padding: 20px 0;
-  
-  button{
+
+  section{
     display: none;
     position: absolute;
     top: calc(100%);
   }
   
-  &:hover > button{
+  &:hover > section{
     display: flex;
+    flex-direction: column;
+    gap: 5px;
   }
   
   a{
