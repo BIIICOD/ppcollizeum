@@ -55,7 +55,7 @@ const SeatRow = (props: IData) => {
                 <img
                     src={sprite?.state === 'free' ? free : sprite?.state === 'close' ? close : book}
                     alt={"Тут должно быть место"}
-                    style={pos > 4 ? {transform: 'rotate(180deg)', margin: '100px 0 0 0'} : {}}
+                    style={pos > 4 ? {transform: 'rotate(180deg)', paddingBottom: '50px'} : {}}
                 />
                 <section>
                     <p>Номер компьютера - {pos}</p>

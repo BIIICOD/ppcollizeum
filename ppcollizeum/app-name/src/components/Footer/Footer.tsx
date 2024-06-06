@@ -56,11 +56,11 @@ const Footer = () => {
                 </FooterContentTop>
                 <FooterContentBottom>
                     <p>
-                        © 2024 GameZone. We love our users!
+                        © 2024 GameZone. Мы любим наших пользователей!
                     </p>
 
                     <p>
-                        Terms & Conditions , Privacy Policy
+                        Правила и условия, Политика конфиденциальности
                     </p>
                 </FooterContentBottom>
             </FooterContent>

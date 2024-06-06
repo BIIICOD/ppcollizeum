@@ -73,21 +73,21 @@ const Login = () => {
                     {currentUser ?
                         <p>Вы уже вошли в аккаунт</p> :
                         <>
-                            <p>{createAccount ? 'Register' : 'Log In'}</p>
+                            <p>{createAccount ? 'Регистрация' : 'Вход'}</p>
                             <input
-                                placeholder="Email"
+                                placeholder="Введите почту"
                                 value={userCreds.email}
                                 onChange={(e) => updateEmail(e)}
                             ></input>
                             <input
-                                placeholder="Password"
+                                placeholder="Введите пароль"
                                 type="password"
                                 value={userCreds.password}
                                 onChange={(e) => updatePassword(e)}
                             ></input>
                             {createAccount &&
                                 <input
-                                    placeholder="Confirm password"
+                                    placeholder="Введите пароль еще раз"
                                     type="password"
                                     value={userCreds.confirmPassword}
                                     onChange={(e) => updateConfirmPassword(e)}

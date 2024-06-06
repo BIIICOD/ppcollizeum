@@ -21,18 +21,20 @@ export const BookPageContent = styled.div`
 `
 
 export const BookWindow = styled.div`
-    display: flex;
-    flex-direction: column;
-    justify-content: space-evenly;
-    align-items: center;
-    height: 700px;
-    width: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 50px;
+  padding: 50px;
+  height: 700px;
+  width: 100%;
 
-    color: white;
+  color: white;
     
-    p{
-        font-size: 24px;
-    }
+  p{
+    font-size: 18px;
+  }
 
 `
 

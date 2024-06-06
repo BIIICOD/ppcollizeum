@@ -2,6 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import { auth, db } from '../firebase';
 import { signInWithEmailAndPassword, createUserWithEmailAndPassword, signOut, onAuthStateChanged } from 'firebase/auth';
 import {onValue, ref, update} from "firebase/database";
+import {log} from "node:util";
 
 const AuthContext = React.createContext<any>(null);
 
@@ -41,11 +42,14 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         onValue(ref(db, '/users'), querySnapShot => {
             let data = querySnapShot.val() || [];
             let usersItems = [data];
-            Object.values(usersItems[0]).map((el:any) => {
-                (el.email === currentUser?.email && el.role === 'admin') && setIsAdmin(true)
+            Object.values(usersItems).map((el) => {
+                let admin = Object.values(el).find((e: any) =>
+                  e.email === currentUser?.email && e.role === 'admin'
+                )
+                admin ? setIsAdmin(true) : setIsAdmin(false)
+            })
             });
         });
-    })
 
     const value = {
         currentUser,

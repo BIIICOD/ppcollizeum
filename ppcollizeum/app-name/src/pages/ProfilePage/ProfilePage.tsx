@@ -31,9 +31,10 @@ const ProfilePage = () => {
     const bookCountFirst = firstData.filter((el) => el.user === currentUser?.email).length
     const bookCountSecond = secondData.filter((el) => el.user === currentUser?.email).length
 
-
   return(
-      <>{!currentUser ?
+      <>
+          {!currentUser
+            ?
           <ProfilePageWrapper>
               <ProfilePageContent>
                 <h1>Войдите в аккаунт для просмотра профиля</h1>
