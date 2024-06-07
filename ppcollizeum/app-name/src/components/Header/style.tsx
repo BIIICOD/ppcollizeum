@@ -61,6 +61,8 @@ export const UserBlock = styled.div`
   &:hover > section{
     display: flex;
     flex-direction: column;
+    justify-content: center;
+    align-items: center;
     gap: 5px;
   }
   

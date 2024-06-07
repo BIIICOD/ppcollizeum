@@ -43,7 +43,9 @@ const Header = () => {
               <Link to={'/cart'}>
                 <ButtonCustom color={"white"} text={'Корзина'}></ButtonCustom>
               </Link>
-              <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
+              <Link to={'/'}>
+                <ButtonCustom onClick={logout} color={"white"} text={'Выйти'}></ButtonCustom>
+              </Link>
             </section>
           </UserBlock>
         }

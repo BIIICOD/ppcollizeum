@@ -97,7 +97,9 @@ const ProfilePage = () => {
                       }
                 </SideContent>
                 <OrderContent>
-                    Оформленные заказы
+                    <>
+                        Оформленные заказы
+                    </>
                 </OrderContent>
             </ProfilePageContent>
         </ProfilePageWrapper>

@@ -5,12 +5,15 @@ import {useEffect, useMemo, useState} from "react";
 import {onValue, ref} from "firebase/database";
 import {db} from "../../firebase";
 import {Link} from "react-router-dom";
+import {useAuth} from "../../context/AuthContext";
 
 const BookPage = () => {
     const [first, setFirst] = useState<any[]>([]);
     const [second, setSecond] = useState<any[]>([]);
     const [data, setData] = useState<any[]>();
     const [dataName, setDataName] = useState('first');
+
+    const {currentUser} = useAuth()
 
     useEffect(() => {
         return onValue(ref(db, '/second'), querySnapShot => {
@@ -59,9 +62,10 @@ const BookPage = () => {
                         {dataName === 'first' ? 'Ростов-на-Дону, Социалистическая ул. 98' : dataName === 'second' ? 'Ростов-на-Дону, Мечникова ул. 77д' : ''}
                     </h1>
                     <p>{data ? <SeatRow data={data} dataName={dataName}/> : 'Подождите, схема клуба загружается' }</p>
+                    { currentUser?.email &&
                     <Link to={'/order'}>
                         <ButtonCustom onClick={selSec} color={"white"} text={'Заказать продукты'}></ButtonCustom>
-                    </Link>
+                    </Link>}
                 </BookWindow>
 
             </BookPageContent>

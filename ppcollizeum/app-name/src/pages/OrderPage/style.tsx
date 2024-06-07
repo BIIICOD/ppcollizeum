@@ -23,6 +23,8 @@ export const OrderPageContent = styled.div`
     padding: 20px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: center;
 `
 
 export const OrderPageTitle = styled.h2`
@@ -32,6 +34,7 @@ export const OrderPageTitle = styled.h2`
 
 export const OrderPageWindow = styled.div`  
     height: 600px;
+    width: 100%;
     border-radius: 5px;
     background-color: ${COLORS.feedbackCardBlack};
     display: flex;
@@ -56,6 +59,7 @@ export const OrderPageWindow = styled.div`
 
 export const OrderPageCard = styled.div`
     width: 250px;
+    max-height: 300px;
     border-radius: 5px;
     padding: 8px;
     background-color: ${COLORS.white};

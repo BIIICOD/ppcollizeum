@@ -9,11 +9,14 @@ import {useEffect, useState} from "react";
 import {onValue, ref} from "firebase/database";
 import {db} from "../../firebase";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
+import {Link} from "react-router-dom";
+import {useAuth} from "../../context/AuthContext";
 
 const OrderPage = () => {
+    const {currentUser} = useAuth()
 
     const [products, setProducts] = useState<any[]>([])
-    const [storedNames, setStoredNames] = useState<any[]>(JSON.parse(localStorage.getItem('names') || ''))
+    const [storedNames, setStoredNames] = useState<any[]>([])
 
     useEffect(() => {
         return onValue(ref(db, '/products'), querySnapShot => {
@@ -24,11 +27,10 @@ const OrderPage = () => {
     }, []);
 
     function addToCart(id: number): any {
-        console.log(id)
         let names = storedNames
         if (storedNames){
             names.push(id);
-            return localStorage.setItem("names", JSON.stringify(names));
+            return localStorage.setItem(`${currentUser?.email}`, JSON.stringify(names));
         }
     }
 
@@ -38,9 +40,14 @@ const OrderPage = () => {
                 <OrderPageTitle>
                     Сделайте ваш заказ
                 </OrderPageTitle>
+                { currentUser?.email &&
+                <Link to={'/cart'}>
+                    <ButtonCustom color={"white"} text={`Корзина`}></ButtonCustom>
+                </Link>
+                }
                 <OrderPageWindow>
                     <>
-                    {
+                    { currentUser?.email &&
                         products.map((el, id) => {
                             return <>
                                 <OrderPageCard>
