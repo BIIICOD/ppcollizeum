@@ -18,6 +18,7 @@ const CartPage = () => {
 
     const [products, setProducts] = useState<any[]>([])
     const [storedNames, setStoredNames] = useState<any[]>(JSON.parse(localStorage.getItem(`${currentUser?.email}`) || ''))
+    const [orders, setOrders] = useState<any[]>([])
 
     useEffect(() => {
         return onValue(ref(db, '/products'), querySnapShot => {
@@ -27,6 +28,16 @@ const CartPage = () => {
         });
     }, []);
 
+    useEffect(() => {
+        return onValue(ref(db, '/orders'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let todoItems = [data];
+            setOrders(todoItems)
+        });
+    }, []);
+
+    console.log(orders)
+
     const clearCart = () => {
         localStorage.setItem(`${currentUser?.email}`, '[]')
         setProducts([])
@@ -35,9 +46,9 @@ const CartPage = () => {
     const countCart = Object.entries(countUniqueStrings(storedNames))
 
     const makeOrder = () => {
-        push(ref(db, `/orders`), {
-            user: `${currentUser?.email.slice(0, currentUser?.email.indexOf("@")).replace('.', '')}`,
+        update(ref(db, `/orders/${Object.keys(orders[0])?.length}`), {
             order: countCart,
+            email: currentUser?.email,
         });
     };
 

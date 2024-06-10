@@ -18,6 +18,8 @@ const ProfilePage = () => {
     const {currentUser, isAdmin} = useAuth();
     const [firstData, setFirstData] = useState<any[]>([])
     const [secondData, setSecondData] = useState<any[]>([])
+    const [ordersData, setOrdersData] = useState<any>()
+    const [productsData, setProductsData] = useState<any>()
 
     useEffect(() => {
         return onValue(ref(db, '/first'), querySnapShot => {
@@ -32,6 +34,22 @@ const ProfilePage = () => {
             let data = querySnapShot.val() || [];
             let todoItems = [...data];
             setSecondData(todoItems)
+        });
+    }, []);
+
+    useEffect(() => {
+        onValue(ref(db, '/orders'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let usersItems = [...data];
+            setOrdersData(usersItems)
+        });
+    }, currentUser);
+
+    useEffect(() => {
+        onValue(ref(db, '/products'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let usersItems = [...data];
+            setProductsData(usersItems)
         });
     }, []);
 
@@ -98,7 +116,18 @@ const ProfilePage = () => {
                 </SideContent>
                 <OrderContent>
                     <>
-                        Оформленные заказы
+                        <p>Оформленные заказы</p>
+                        {ordersData?.map((order: { email: any; order: any; }) => {
+                            return <p>{order.email} {order.order.map((el: any) => {
+                                return <>{productsData?.map((product: any, index: any) => {
+                                    if (index === Number(el[0])){
+                                        return (
+                                            product.name + ' - ' + el[1] + 'шт. '
+                                        )
+                                    }
+                                })}</>
+                            })}</p>
+                        })}
                     </>
                 </OrderContent>
             </ProfilePageContent>
