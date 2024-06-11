@@ -21,7 +21,6 @@ export const ProfilePageContent = styled.div`
     background-color: ${COLORS.feedbackBlack};
     border-radius: 15px;
     display: flex;
-    justify-content: space-between;
 `
 
 export const ProfilePageUnlogin = styled.div`
@@ -36,6 +35,7 @@ export const ProfilePageUnlogin = styled.div`
 
 export const SideContent = styled.div`
     max-width: 500px;
+    min-width: 370px;
     min-height: 700px;
     padding: 100px 0;
     display: flex;
@@ -72,9 +72,53 @@ export const SideContentBody = styled.ul`
 `
 
 export const OrderContent = styled.div`
-    width: 60%;
-    padding-top: 100px;
     display: flex;
     flex-direction: column;
+    justify-content: center;
     align-items: center;
+    gap: 20px;
+    width: 100%;
+`
+
+export const ProfilePageOrderWindow = styled.div`  
+    height: 600px;
+    width: 100%;
+    border-radius: 5px;
+    background-color: ${COLORS.feedbackCardBlack};
+    display: flex;
+    padding: 25px;
+    margin-right: 20px;
+    justify-content: flex-start;
+    flex-direction: column;
+    gap: 25px;
+    overflow: auto;
+    
+    &::-webkit-scrollbar-thumb {
+        background-color: #FC4B37;    /* цвет плашки */
+        border-radius: 10px;       /* закругления плашки */
+        border: 3px solid #222629ff;  /* padding вокруг плашки */
+    }
+    &::-webkit-scrollbar {
+        width: 12px;               /* ширина scrollbar */
+    }
+    &::-webkit-scrollbar-track {
+        background: #222629ff;        /* цвет дорожки */
+    }
+`
+
+export const ProfilePageOrderCard = styled.div`
+    width: 100%;
+    border-radius: 5px;
+    padding: 8px;
+    background-color: ${COLORS.white};
+    color: black;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    transition: 0.4s;
+    user-select: none;
+    text-align: center;
+    position: relative;
 `

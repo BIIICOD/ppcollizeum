@@ -38,6 +38,7 @@ const CartPage = () => {
 
     console.log(orders)
 
+
     const clearCart = () => {
         localStorage.setItem(`${currentUser?.email}`, '[]')
         setProducts([])
@@ -46,10 +47,18 @@ const CartPage = () => {
     const countCart = Object.entries(countUniqueStrings(storedNames))
 
     const makeOrder = () => {
-        update(ref(db, `/orders/${Object.keys(orders[0])?.length}`), {
-            order: countCart,
-            email: currentUser?.email,
-        });
+        let lastIndex= Object.keys(orders[0])?.at(-1)
+        if (lastIndex) {
+            update(ref(db, `/orders/${Number(lastIndex) + 1}`), {
+                order: countCart,
+                email: currentUser?.email,
+            });
+        } else {
+            update(ref(db, `/orders/${0}`), {
+                order: countCart,
+                email: currentUser?.email,
+            });
+        }
     };
 
     return (
