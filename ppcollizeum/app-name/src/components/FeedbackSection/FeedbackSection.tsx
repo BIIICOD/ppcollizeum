@@ -9,18 +9,68 @@ import {
     FeedbackUserBlock,
     FeedbackUserIcon,
     FeedbackUserName,
-    FeedbackUserRate
+    FeedbackUserRate, ModalContent, ModalWrapper
 } from "./style";
 
 import {ReactComponent as Feedback} from "../../icons/FeedbackIcon.svg";
 import {ReactComponent as StarIcon} from "../../icons/StarIcon.svg";
-
+import {ButtonWrapper} from "../FirstSection/style";
+import ButtonCustom from "../ButtonCustom/ButtonCustom";
+import {SetStateAction, useEffect, useState} from "react";
+import ReactStars from 'react-rating-star-with-type'
+import {COLORS} from "../../constants/Colors";
+import {toast, ToastContainer} from "react-toastify";
+import {onValue, ref, update} from "firebase/database";
+import {db} from "../../firebase";
+import 'react-toastify/dist/ReactToastify.css';
 
 
 const FeedbackSection = () => {
+    const [modalDisplay, setModalDisplay] = useState(false);
+
+    const [name, setName] = useState('');
+    const [feedback, setFeedback] = useState('');
+    const [feedData, setFeedbackData] = useState<any>();
+    const [star, setStar] = useState(0);
+
+    const onChange = (nextValue: SetStateAction<number>)=>{
+        setStar(nextValue)
+    }
+
+    useEffect(() => {
+        return onValue(ref(db, '/feedback'), querySnapShot => {
+            let data = querySnapShot.val() || [];
+            let todoItems = [...data];
+            setFeedbackData(todoItems)
+        });
+    }, []);
+
+    const sendFeedback = () => {
+        if (name === '') return toast.error('Заполните имя')
+        if (feedback === '') return toast.error('Заполните отзыв')
+        if (star === 0) return toast.error('Выбирете оценку')
+        let lastIndex= Object.keys(feedData[0])?.at(-1)
+        if (lastIndex) {
+            update(ref(db, `/feedback/${Number(lastIndex) + 1}`), {
+                name: name,
+                feedback: feedback,
+                star: star,
+            });
+            toast.success(`Отзыв создан`)
+        } else {
+            update(ref(db, `/feedback/${0}`), {
+                name: name,
+                feedback: feedback,
+                star: star,
+            });
+            toast.success(`Отзыв создан`)
+        }
+    };
+
     return(
         <FeedbackSectionWrapper id={'contact'}>
             <FeedbackSectionContent>
+                <ToastContainer></ToastContainer>
                 <FeedbackSectionTitle>
                     Счастливые Игроки
                 </FeedbackSectionTitle>
@@ -63,6 +113,33 @@ const FeedbackSection = () => {
                         </FeedbackUserBlock>
                     </FeedbackCard>
                 </FeedbackCardBlock>
+
+                <ModalWrapper
+                    display={modalDisplay}
+                >
+                    <ModalContent>
+                            <input type={"text"} placeholder={'Введите имя'}/>
+                            <textarea className={'textarea'} rows={5} cols={80} placeholder={'Введите текст отзыва'}></textarea>
+                            <label>
+                                Выберите оценку
+                            </label>
+                            <ReactStars
+                                onChange={onChange}
+                                value={star}
+                                size={25}
+                                isEdit={true}
+                                activeColors={["gray", "gray", `${COLORS.redHover}`, `${COLORS.redHover}`, `${COLORS.mainRed}`,]}
+                            />
+                            <ButtonCustom onClick={() => sendFeedback()} color={'red'} text={'Отправить отзыв'}/>
+                    </ModalContent>
+                    <ButtonCustom onClick={() => {
+                        setModalDisplay(false)}} color={'white'} text={'Закрыть окно'}/>
+                </ModalWrapper>
+
+                <ButtonWrapper>
+                    <ButtonCustom onClick={() => {setModalDisplay(true)}} color={'red'} text={'Оставить отзыв'}></ButtonCustom>
+                    <ButtonCustom color={'white'} text={'Посмотреть все отзывы'}></ButtonCustom>
+                </ButtonWrapper>
             </FeedbackSectionContent>
         </FeedbackSectionWrapper>
     )
