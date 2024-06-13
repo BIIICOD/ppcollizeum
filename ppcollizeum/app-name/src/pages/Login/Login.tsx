@@ -5,6 +5,8 @@ import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {useNavigate} from 'react-router-dom';
 import {push, ref, update} from "firebase/database";
 import {db} from "../../firebase";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 interface UserCreds {
     email: string;
@@ -48,18 +50,22 @@ const Login = () => {
                     navigate('/profile')
                 } catch (e:any){
                     if(e.code === 'auth/email-already-in-use'){
-                        alert('Такой email уже существует. Попробуйте снова');
+                        toast.error('Такой email уже существует. Попробуйте снова')
+                    } else if (e.code === 'auth/weak-password'){
+                        toast.error('Слабый пароль')
                     }
                 }
-            } else alert('Passwords don\'t match');
+            } else toast.error('Пароли не совпадают')
         } else {
             try{
                 await login(userCreds.email, userCreds.password);
+                localStorage.setItem("email", userCreds.email);
                 localStorage.setItem("isAuth", 'true')
+                toast.success('Авторизация успешна')
                 navigate('/profile');
             } catch (e:any){
                 if(e.code === 'auth/invalid-credential'){
-                    alert('Неверный логин или пароль. Попробуйте снова');
+                    toast.error('Неверный логин или пароль. Попробуйте снова')
                 }
             }
         }
@@ -69,6 +75,7 @@ const Login = () => {
     return (
         <>
             <LoginWrapper>
+                <ToastContainer></ToastContainer>
                 <LoginContent>
                     {currentUser ?
                         <p>Вы уже вошли в аккаунт</p> :

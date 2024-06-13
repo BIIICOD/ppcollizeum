@@ -11,6 +11,8 @@ import {db} from "../../firebase";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {Link} from "react-router-dom";
 import {useAuth} from "../../context/AuthContext";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const OrderPage = () => {
     const {currentUser} = useAuth()
@@ -27,9 +29,10 @@ const OrderPage = () => {
     }, []);
 
     function addToCart(id: number): any {
-        let names = storedNames
+        let names = JSON.parse(localStorage.getItem(`${localStorage.getItem('email')}`) || '[]')
         if (storedNames){
             names.push(id);
+            toast.info(`Продукт "${products[id].name}" добавлен в корзину`)
             return localStorage.setItem(`${currentUser?.email}`, JSON.stringify(names));
         }
     }
@@ -37,6 +40,7 @@ const OrderPage = () => {
     return (
         <OrderPageWrapper>
             <OrderPageContent>
+                <ToastContainer />
                 <OrderPageTitle>
                     Сделайте ваш заказ
                 </OrderPageTitle>

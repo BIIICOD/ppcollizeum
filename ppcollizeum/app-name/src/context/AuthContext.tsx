@@ -26,6 +26,7 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     }
 
     function logout() {
+        localStorage.removeItem("email")
         localStorage.removeItem("isAuth")
         return signOut(auth);
     }

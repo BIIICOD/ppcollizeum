@@ -14,6 +14,8 @@ import {db} from "../../firebase";
 import ButtonCustom from "../../components/ButtonCustom/ButtonCustom";
 import {Link} from "react-router-dom";
 import {ButtonWrapper} from "../../components/FirstSection/style";
+import {toast, ToastContainer} from "react-toastify";
+import 'react-toastify/dist/ReactToastify.css';
 
 const ProfilePage = () => {
     const {currentUser, isAdmin} = useAuth();
@@ -58,6 +60,7 @@ const ProfilePage = () => {
         update(ref(db, `/orders/${orderId}`), {
             status: 'success',
         });
+        toast.success(`Заказ №${orderId} завершен`)
     };
 
     const bookCountFirst = firstData.filter((el) => el.user === currentUser?.email).length
@@ -65,6 +68,7 @@ const ProfilePage = () => {
 
   return(
       <>
+          <ToastContainer/>
           {!currentUser
             ?
           <ProfilePageWrapper>
@@ -156,11 +160,11 @@ const ProfilePage = () => {
                         <>
                             <p>Оформленные заказы</p>
                             <ProfilePageOrderWindow>
-                                {ordersData?.map((order: { email: any; order: any; }) => {
+                                {ordersData?.map((order: { email: any; order: any; }, index: number) => {
                                     let totCoast = 0;
                                     if (order && order.email === currentUser.email) {
                                         return <ProfilePageOrderCard><p>Имя пользователя
-                                            - {order.email}</p> {order.order.map((el: any) => {
+                                            - {order.email} <br/> Номер заказа - {index}</p> {order.order.map((el: any) => {
                                             return <p>{productsData?.map((product: any, index: any) => {
                                                 if (index === Number(el[0])) {
                                                     totCoast = totCoast + product.price * el[1]
