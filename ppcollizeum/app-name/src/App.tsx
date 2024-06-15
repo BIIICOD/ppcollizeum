@@ -10,6 +10,7 @@ import AuthProvider from "./context/AuthContext";
 import BookPage from "./pages/BookPage/BookPage";
 import OrderPage from "./pages/OrderPage/OrderPage";
 import CartPage from "./pages/CartPage/CartPage";
+import FeedbackPage from "./pages/FeedbackPage/Feedback";
 
 
 
@@ -27,6 +28,7 @@ function App() {
                   <Route path="/profile" element={<ProfilePage />} />
                   <Route path="/order" element={<OrderPage />} />
                   <Route path="/cart" element={<CartPage />} />
+                  <Route path="/feedback" element={<FeedbackPage />} />
               </Routes>
           <Footer/>
           </AuthProvider>

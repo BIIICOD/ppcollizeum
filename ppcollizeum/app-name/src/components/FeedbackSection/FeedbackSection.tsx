@@ -23,6 +23,7 @@ import {toast, ToastContainer} from "react-toastify";
 import {onValue, ref, update} from "firebase/database";
 import {db} from "../../firebase";
 import 'react-toastify/dist/ReactToastify.css';
+import {Link} from "react-router-dom";
 
 
 const FeedbackSection = () => {
@@ -40,7 +41,7 @@ const FeedbackSection = () => {
     useEffect(() => {
         return onValue(ref(db, '/feedback'), querySnapShot => {
             let data = querySnapShot.val() || [];
-            let todoItems = [...data];
+            let todoItems = [data];
             setFeedbackData(todoItems)
         });
     }, []);
@@ -65,6 +66,10 @@ const FeedbackSection = () => {
             });
             toast.success(`Отзыв создан`)
         }
+        setModalDisplay(false)
+        setStar(0)
+        setName('')
+        setFeedback('')
     };
 
     return(
@@ -118,8 +123,20 @@ const FeedbackSection = () => {
                     display={modalDisplay}
                 >
                     <ModalContent>
-                            <input type={"text"} placeholder={'Введите имя'}/>
-                            <textarea className={'textarea'} rows={5} cols={80} placeholder={'Введите текст отзыва'}></textarea>
+                            <input
+                              value={name}
+                              type={"text"}
+                              placeholder={'Введите имя'}
+                              onChange={(e) => {setName(e.target.value)}}
+                            />
+                            <textarea
+                              value={feedback}
+                              className={'textarea'}
+                              rows={5} cols={80}
+                              placeholder={'Введите текст отзыва'}
+                              onChange={(e) => {setFeedback(e.target.value)}}
+                            >
+                            </textarea>
                             <label>
                                 Выберите оценку
                             </label>
@@ -138,7 +155,9 @@ const FeedbackSection = () => {
 
                 <ButtonWrapper>
                     <ButtonCustom onClick={() => {setModalDisplay(true)}} color={'red'} text={'Оставить отзыв'}></ButtonCustom>
-                    <ButtonCustom color={'white'} text={'Посмотреть все отзывы'}></ButtonCustom>
+                    <Link to={'/feedback'}>
+                        <ButtonCustom color={'white'} text={'Посмотреть все отзывы'}></ButtonCustom>
+                    </Link>
                 </ButtonWrapper>
             </FeedbackSectionContent>
         </FeedbackSectionWrapper>

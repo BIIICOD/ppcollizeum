@@ -42,7 +42,9 @@ export const FeedbackCardBlock = styled.div`
 
 export const FeedbackCard = styled.div`
     width: 100%;
+    min-width: 500px;
     max-width: 575px;
+    min-height: 300px;
     padding: 50px;
     border-radius: 50px;
     display: flex;
@@ -61,7 +63,6 @@ export const FeedbackUserBlock = styled.div`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    flex-wrap: wrap;
 `
 
 export const FeedbackUser = styled.div`
@@ -107,6 +108,7 @@ export const ModalForm = styled.div`
 `
 
 export const ModalContent = styled.div`
+    margin-top: 50px;
     background-color: ${COLORS.white};
     display: flex;
     flex-direction: column;
@@ -116,9 +118,11 @@ export const ModalContent = styled.div`
     height: 500px;
     width: 800px;
     border-radius: 20px;
+    color: black;
     
         input{
-            font-size: 24px;
+            padding: 5px;
+            font-size: 16px;
             width: 300px;
             border-radius: 10px;
             border: 2px solid ${COLORS.mainRed};
@@ -131,8 +135,7 @@ export const ModalContent = styled.div`
             width: 300px;
             border-radius: 10px;
             border: 2px solid ${COLORS.mainRed};
-            padding-top: 10px;
-            padding-left: 10px;
+            padding: 10px;
             resize: none;
             text-wrap: wrap;
         }
