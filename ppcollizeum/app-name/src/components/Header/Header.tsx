@@ -22,7 +22,7 @@ const Header = () => {
     window.addEventListener('scroll', listenScrollEvent)
   }, [])
 
-  const { currentUser, logout} = useAuth()
+  const { currentUser, logout } = useAuth()
 
   return (
     <HeaderWrapper background={color} height={height}>

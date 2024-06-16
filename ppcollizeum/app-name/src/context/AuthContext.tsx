@@ -16,6 +16,8 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
     // Можем опционально определить состояние userData и добавить в контекст.
     const [currentUser, setCurrentUser] = useState<any>(null);
     const [isAdmin, setIsAdmin] = useState<boolean>(false)
+    const [creds, setCreds] = useState('')
+    const [places, setPlaces] = useState<any>()
 
     function signup(email: string, password: string) {
         return createUserWithEmailAndPassword(auth, email, password);
@@ -43,21 +45,35 @@ const AuthProvider = ({ children }: { children: React.ReactNode }) => {
         onValue(ref(db, '/users'), querySnapShot => {
             let data = querySnapShot.val() || [];
             let usersItems = [data];
-            Object.values(usersItems).map((el) => {
-                let admin = Object.values(el).find((e: any) =>
+            Object.values(usersItems).map((el, id, data) => {
+                const admin = Object.values(el).find((e: any) =>
                   e.email === currentUser?.email && e.role === 'admin'
                 )
                 admin ? setIsAdmin(true) : setIsAdmin(false)
+                const creds = Object.entries(el).find((e: any) => e[1].email === currentUser?.email)
+                if (creds) {
+                    setCreds(creds[0])
+                }
+                const places = Object.entries(el).map((e: any) => {
+                    if (e[1].data && e[1].hours && e[1].number && e[1].email && e[1].clubName)
+                        return (
+                            [e[1].data, e[1].hours, e[1].number, e[1].email, e[1].clubName]
+                        )
+                    else return [0, 0, 0, 0, 0]
+                })
+                setPlaces(places)
             })
             });
-        });
+        }, [currentUser]);
 
     const value = {
         currentUser,
         signup,
         logout,
         login,
-        isAdmin
+        isAdmin,
+        creds,
+        places
     };
 
     return (

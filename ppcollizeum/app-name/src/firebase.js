@@ -14,7 +14,7 @@ import { getDatabase } from 'firebase/database';
 const firebaseConfig = {
     apiKey: "AIzaSyDhc-uu6qss0_pklpa8nTGzMkyh-0Vr2Vw",
     authDomain: "gamezone-e06e0.firebaseapp.com",
-    databaseURL: 'https://gamezone-e06e0-default-rtdb.firebaseio.com/',
+    databaseURL: 'https://gamezone-e06e0-default-rtdb.firebaseio.com',
     projectId: "gamezone-e06e0",
     storageBucket: "gamezone-e06e0.appspot.com",
     messagingSenderId: "328947294196",

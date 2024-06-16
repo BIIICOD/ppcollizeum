@@ -11,6 +11,7 @@ import BookPage from "./pages/BookPage/BookPage";
 import OrderPage from "./pages/OrderPage/OrderPage";
 import CartPage from "./pages/CartPage/CartPage";
 import FeedbackPage from "./pages/FeedbackPage/Feedback";
+import "react-datepicker/dist/react-datepicker.css";
 
 
 
