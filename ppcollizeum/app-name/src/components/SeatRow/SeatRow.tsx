@@ -116,12 +116,9 @@ const SeatRow = (props: IData) => {
             if (book || sprite.state === 'bookAdmin' || userBook) {
                 return 'book';
             }
-            else if (startDate.getHours() !== sprite.hours) {
+            else if (startDate.toDateString() !== sprite.data) {
                 return 'free'
             }
-/*            else if (startDate.toDateString() !== sprite.data) {
-                return 'free'
-            }*/
             else if (close || sprite.state === 'close' || sprite.state == 'closeAdmin') {
                 return 'close';
             }

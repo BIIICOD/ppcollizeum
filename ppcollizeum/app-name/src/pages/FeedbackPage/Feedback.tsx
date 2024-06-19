@@ -27,8 +27,6 @@ const FeedbackPage = () => {
     });
   }, []);
 
-  console.log(feedbackData)
-
   return (
     <FeedbackWrapper>
       <h1>Отзывы о нашем клубе</h1>
